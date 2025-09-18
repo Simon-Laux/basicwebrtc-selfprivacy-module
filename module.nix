@@ -2,7 +2,7 @@
 let
   # Just for convinience, this module's config values
   sp = config.selfprivacy;
-  cfg = sp.modules.service_id;
+  cfg = sp.modules.basicwebrtc;
 in
 {
   # Here go the options you expose to the user.
@@ -18,16 +18,25 @@ in
       };
     };
     # This is required if your service stores data on disk
-    location = (lib.mkOption {
-      type = lib.types.str;
-      description = "basicWebRTC location";
+    subdomain = (lib.mkOption {
+      default = "beep";
+      type = lib.types.strMatching "[A-Za-z0-9][A-Za-z0-9\-]{0,61}[A-Za-z0-9]";
+      description = "Subdomain";
     }) // {
       meta = {
-        type = "location";
+        widget = "subdomain";
+        type = "string";
+        regex = "[A-Za-z0-9][A-Za-z0-9\-]{0,61}[A-Za-z0-9]";
+        weight = 0;
       };
     };
 
+  };
 
+    # All your changes to the system must go to this config attrset.
+    # It MUST use lib.mkIf with an enable option.
+    # This makes sure your module only makes changes to the system
+    # if the module is enabled.
   config = lib.mkIf cfg.enable {
 
     # Your service configuration, varies heavily.
@@ -78,5 +87,4 @@ in
       };
     };
   };
- };
 }

@@ -16,7 +16,6 @@
       description = "Basic encrypted p2p audio and video calls over WebRTC.";
       svgIcon = builtins.readFile ./icon.svg;
       showUrl = true;
-      primarySubdomain = "beep";
       isMovable = false;
       isRequired = false;
       canBeBackedUp = false;
