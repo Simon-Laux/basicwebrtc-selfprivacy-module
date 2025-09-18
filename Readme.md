@@ -12,7 +12,8 @@ It is encrypted and p2p over WebRTC.
 Since it is p2p, there is a limit on how many participants can be in a call.
 2-4 people should work fine in most cases,
 but it depends on the bandwidth of the participants (because each participant connects to each other, network traffic grows exponentially the more people you add).
-Such p2p call systems could be much more efficient if the broad internet would support IP multicast.
+
+Such p2p call systems could be much more efficient if the broad internet would support IP multicast. If you want to learn more about multicast, then <https://librecast.net> could be a good starting point.
 
 ## Installation
 
