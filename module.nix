@@ -68,7 +68,7 @@ in
       '';
       locations = {
         "/" = {
-          proxyPass = "http://localhost:2283";
+          proxyPass = "http://localhost:3900";
           proxyWebsockets = true;
         };
       };
