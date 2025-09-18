@@ -43,7 +43,7 @@ in
         description = "Basicwebrtc signaling server and webserver";
         wantedBy = [ "multi-user.target" ];
         serviceConfig = {
-          ExecStart = "${basicwebrtc}/bin/basicwebrtc";
+          ExecStart = "${basicwebrtc.packages.${pkgs.system}.default}/bin/basicwebrtc";
           Restart = "always";
           Type = "simple";
           Slice = "basicwebrtc.slice";
