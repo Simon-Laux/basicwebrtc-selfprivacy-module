@@ -37,13 +37,12 @@
 
           mkdir $out/bin
           cat > $out/bin/basicwebrtc <<EOF
-#!/usr/bin/env bash
+#!${pkgs.bash}/bin/bash
 export listen_port=3900
 cd $out/
 exec ${pkgs.nodejs}/bin/node $out/server.js "\$@"
 EOF
           chmod +x $out/bin/basicwebrtc
-          patchShebangs $out/bin/basicwebrtc
         '';
       };
   });
