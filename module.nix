@@ -43,7 +43,7 @@ in
       };
     }; # bin/basicwebrtc
     systemd = {
-      services.myService = {
+      services.basicwebrtc = {
         description = "Basicwebrtc signaling server and webserver";
         wantedBy = [ "multi-user.target" ];
         serviceConfig = {
