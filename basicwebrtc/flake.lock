@@ -1,0 +1,45 @@
+{
+  "nodes": {
+    "basicwebrtc": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1758217802,
+        "narHash": "sha256-+lOdQqb81himYBx9d2kC6o0v7K+0DXxR7I5Pz4TtXrw=",
+        "owner": "cracker0dks",
+        "repo": "basicwebrtc",
+        "rev": "ea2be6e7628713fae744d8034cf77f17e54a22ac",
+        "type": "github"
+      },
+      "original": {
+        "owner": "cracker0dks",
+        "ref": "simon/small-ui-improvements",
+        "repo": "basicwebrtc",
+        "type": "github"
+      }
+    },
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1758035966,
+        "narHash": "sha256-qqIJ3yxPiB0ZQTT9//nFGQYn8X/PBoJbofA7hRKZnmE=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "8d4ddb19d03c65a36ad8d189d001dc32ffb0306b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "root": {
+      "inputs": {
+        "basicwebrtc": "basicwebrtc",
+        "nixpkgs": "nixpkgs"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}
