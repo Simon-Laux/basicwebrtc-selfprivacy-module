@@ -38,19 +38,6 @@ in
     # This makes sure your module only makes changes to the system
     # if the module is enabled.
   config = lib.mkIf cfg.enable {
-
-    # Your service configuration, varies heavily.
-    # Refer to NixOS Options search.
-    # You can use defined options here.
-    services.service = {
-      enable = true;
-      domain = "${cfg.subdomain}.${sp.domain}";
-      config = {
-        theme = cfg.defaultTheme;
-        appName = cfg.appName;
-        signupsAllowed = cfg.signupsAllowed;
-      };
-    }; # bin/basicwebrtc
     systemd = {
       services.basicwebrtc = {
         description = "Basicwebrtc signaling server and webserver";
