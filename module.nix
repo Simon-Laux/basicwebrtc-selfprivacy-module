@@ -6,12 +6,12 @@ let
 in
 {
   # Here go the options you expose to the user.
-  options.selfprivacy.modules.service_id = {
+  options.selfprivacy.modules.basicwebrtc = {
     # This is required and must always be named "enable"
     enable = (lib.mkOption {
       default = false;
       type = lib.types.bool;
-      description = "Enable the service";
+      description = "Enable the basicWebRTC";
     }) // {
       meta = {
         type = "enable";
@@ -20,7 +20,7 @@ in
     # This is required if your service stores data on disk
     location = (lib.mkOption {
       type = lib.types.str;
-      description = "Service location";
+      description = "basicWebRTC location";
     }) // {
       meta = {
         type = "location";
