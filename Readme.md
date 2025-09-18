@@ -28,7 +28,7 @@ nano /etc/nixos/sp-modules/flake.nix
 Add this to the end of your file, but before `outputs = _: { };`:
 ```nix
   # Your own modules:
-  inputs.basicwebrtc.url = "git+https://github.com/Simon-Laux/immich-selfprivacy-module";
+  inputs.basicwebrtc.url = "git+https://github.com/Simon-Laux/basicwebrtc-selfprivacy-module";
 ```
 
 Then run this command to make it appear in the SelfPrivacy app:
