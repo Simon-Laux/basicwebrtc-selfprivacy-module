@@ -22,13 +22,15 @@ to the inputs of your SelfPrivacy instance.
 
 Login to your server via ssh and open the inputs file:
 ```sh
-nano /etc/nixos/sp-modules/flake.nix
+nano /etc/nixos/flake.nix
 ```
 
-Add this to the end of your file, but before `outputs = _: { };`:
+Add this to the end of the `inputs = {` block:
 ```nix
   # Your own modules:
-  inputs.basicwebrtc.url = "git+https://github.com/Simon-Laux/basicwebrtc-selfprivacy-module";
+  sp-module-basicwebrtc = {
+    url = "git+https://github.com/Simon-Laux/basicwebrtc-selfprivacy-module";
+  };
 ```
 
 Then run this command to make it appear in the SelfPrivacy app:
