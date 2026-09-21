@@ -4,7 +4,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     basicwebrtc = {
-      url = "github:cracker0dks/basicwebrtc?ref=simon/small-ui-improvements";
+      url = "github:cracker0dks/basicwebrtc";
       flake = false;
     };
   };
