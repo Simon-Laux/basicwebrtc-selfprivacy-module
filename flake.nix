@@ -7,8 +7,6 @@
 
   outputs = { self, basicwebrtc }: {
     nixosModules.default = import ./module.nix { inherit basicwebrtc; };
-    configPathsNeeded =
-      builtins.fromJSON (builtins.readFile ./config-paths-needed.json);
     meta = {lib, ...}: {
       spModuleSchemaVersion = 1;
       id = "basicwebrtc";
