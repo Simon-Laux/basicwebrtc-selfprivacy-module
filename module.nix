@@ -42,11 +42,52 @@ in
       services.basicwebrtc = {
         description = "Basicwebrtc signaling server and webserver";
         wantedBy = [ "multi-user.target" ];
+        # Only nginx talks to it, so don't expose port 3900 on all interfaces
+        environment.listen_ip = "127.0.0.1";
         serviceConfig = {
           ExecStart = "${basicwebrtc.packages.${pkgs.system}.default}/bin/basicwebrtc";
           Restart = "always";
           Type = "simple";
           Slice = "basicwebrtc.slice";
+
+          # Sandboxing: the server is stateless, only reads from the nix store,
+          # listens on localhost and makes no outbound connections.
+          DynamicUser = true;
+          User = "basicwebrtc";
+          Group = "basicwebrtc";
+
+          ProtectSystem = "strict";
+          ProtectHome = true;
+          PrivateTmp = true;
+          PrivateDevices = true;
+          ProtectKernelTunables = true;
+          ProtectKernelModules = true;
+          ProtectKernelLogs = true;
+          ProtectControlGroups = true;
+          ProtectClock = true;
+          ProtectHostname = true;
+          ProtectProc = "invisible";
+          ProcSubset = "pid";
+          UMask = "0077";
+
+          NoNewPrivileges = true;
+          CapabilityBoundingSet = "";
+          AmbientCapabilities = "";
+          RestrictSUIDSGID = true;
+          RestrictRealtime = true;
+          RestrictNamespaces = true;
+          LockPersonality = true;
+          RemoveIPC = true;
+          PrivateUsers = true;
+
+          RestrictAddressFamilies = [ "AF_INET" "AF_INET6" ];
+          IPAddressDeny = "any";
+          IPAddressAllow = [ "localhost" ];
+
+          SystemCallArchitectures = "native";
+          SystemCallFilter = [ "@system-service" "~@privileged" "~@resources" ];
+          # Node's V8 JIT needs writable+executable memory, enabling this crashes node
+          MemoryDenyWriteExecute = false;
         };
       };
       # Define the slice itself
